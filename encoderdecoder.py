@@ -5,19 +5,20 @@ from matplotlib import pyplot as plt
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense, TimeDistributed, Embedding, Dropout
 
-# Import the text, shuffle it and add the start and end of sequence characters
-questanswcsv="C:\\Users\\Daniel.GarciaPerez\\Desktop\\Python\\github\\chatbot\\enfr.csv"
-qatext=pd.read_csv(questanswcsv)
-qatext=qatext.head(30000).sample(frac=1)
-qatext=qatext.rename(columns={qatext.columns[0]:"questions", qatext.columns[1]:"answers"})
-questions=(qatext["questions"]).astype(str)
-answers=("SOSEN "+qatext["answers"]+" EOSEN").astype(str)
-
 # Define model training parameters and latent dimension for the LSTMs
 epochs=100
 bsize=500
 valsplit=0.2
 hidden_dim=400
+samples=30000
+
+# Import the text, shuffle it and add the start and end of sequence characters
+questanswcsv="filepath"
+qatext=pd.read_csv(questanswcsv)
+qatext=qatext.head(samples).sample(frac=1)
+qatext=qatext.rename(columns={qatext.columns[0]:"questions", qatext.columns[1]:"answers"})
+questions=(qatext["questions"]).astype(str)
+answers=("SOSEN "+qatext["answers"]+" EOSEN").astype(str)
 
 # Tokenize the texts
 def tokenizer(texts, file):
