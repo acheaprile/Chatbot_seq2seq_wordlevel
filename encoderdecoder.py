@@ -107,19 +107,3 @@ print ("Output max length seq:", decoder_max_seqlen)
 
 history=model(encoder_uniquewords, encoder_max_seqlen, decoder_uniquewords,
           decoder_max_seqlen, encoder_input, decoder_input, decoder_output, hidden_dim)[1]
-
-plt.plot(history.history['accuracy'])
-plt.plot(history.history['val_accuracy'])
-plt.title('model accuracy')
-plt.ylabel('accuracy')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
-
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
